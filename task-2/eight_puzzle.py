@@ -51,4 +51,17 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+    goal_state = (1, 2, 3, 4, 5, 6, 7, 8, 0)
+    misplaced_tiles = 0
+    flag = 1
+    for i in range(9):
+        if board[i] != goal_state[i]:
+            if board[i] == 0:
+                continue
+        goal_index = goal_state.index(board[i])
+        if (i // 3 != goal_index // 3):
+            misplaced_tiles += 1
+        if (i % 3 != goal_index % 3):
+            misplaced_tiles += 1
+
+    return misplaced_tiles
